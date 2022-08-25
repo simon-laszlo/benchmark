@@ -1,0 +1,16 @@
+@port = 3000
+POST http://localhost:{{port}}/customers
+Content-Type: application/json
+
+{    
+  "guid": "1234567890",
+  "first_name": "Test",
+  "last_name": "User",
+  "email": "testuser@gmail.com",
+  "address": "Blabla 88888 Bla, Bla 8"
+}
+
+###
+
+GET http://localhost:{{port}}/customers
+
