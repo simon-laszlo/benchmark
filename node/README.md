@@ -13,3 +13,16 @@ npm run start
 ```
 npm run dev
 ```
+
+## PM2 start
+In prod mode:
+
+```
+npm run pm2_start
+```
+
+## PM2 stop
+
+```
+npm run pm2_stop
+```

@@ -31,9 +31,9 @@ Creates a new customer in the mongo db.
 If you don't have yet any mongo on your localhost, then the simplest way to start with docker. Check the docker folder of the project.
 
 
-#### Drop DB
+#### Drop the customers collection
 ```
-docker exec benchmark-mongo
+./docker/clean.sh
 ```
 
 ### WRK and WRK2
@@ -155,4 +155,33 @@ Running 30s test @ http://localhost:3001/customers
   Socket errors: connect 0, read 7764, write 0, timeout 0
 Requests/sec:    258.72
 Transfer/sec:     31.11MB
+```
+
+#### GO - Gin
+#### POST
+PORT=3001 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
+
+```
+Running 30s test @ http://localhost:3002/customers
+  2 threads and 60 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     2.57ms    1.99ms  51.84ms   89.63%
+    Req/Sec    12.37k     1.08k   15.11k    73.50%
+  739064 requests in 30.02s, 83.17MB read
+Requests/sec:  24617.32
+Transfer/sec:      2.77MB
+```
+
+#### GET
+wrk -c60 -d30s -t2 http://localhost:3002/customers
+
+```
+Running 30s test @ http://localhost:3002/customers
+  2 threads and 60 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    55.91ms   46.62ms 526.46ms   80.52%
+    Req/Sec   603.31     81.01   810.00     66.17%
+  36099 requests in 30.07s, 4.24GB read
+Requests/sec:   1200.50
+Transfer/sec:    144.42MB
 ```
