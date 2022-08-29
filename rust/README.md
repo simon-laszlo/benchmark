@@ -1,3 +1,5 @@
+Rust version 1.63
+
 ## Build
 ```
 cargo build --release

@@ -1,4 +1,6 @@
 # Node js implementation with express js
+node v16.14.0 (npm v8.15.1)
+
 The default port is 3001
 
 ## Start

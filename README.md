@@ -185,3 +185,61 @@ Running 30s test @ http://localhost:3002/customers
 Requests/sec:   1200.50
 Transfer/sec:    144.42MB
 ```
+
+#### quarkus
+#### POST
+PORT=8080 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
+
+```
+Running 30s test @ http://localhost:8080/customers
+  2 threads and 60 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     6.74ms    1.62ms  57.79ms   93.11%
+    Req/Sec     4.48k   315.30     5.03k    87.17%
+  267723 requests in 30.02s, 20.43MB read
+Requests/sec:   8918.88
+Transfer/sec:    696.79KB
+```
+
+#### GET
+wrk -c60 -d30s -t2 http://localhost:8080/customers
+
+```
+Running 30s test @ http://localhost:8080/customers
+  2 threads and 60 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    76.87ms   50.58ms 429.99ms   66.53%
+    Req/Sec   409.36     93.40   656.00     68.33%
+  24485 requests in 30.07s, 2.74GB read
+Requests/sec:    814.38
+Transfer/sec:     93.39MB
+```
+
+#### quarkus reactive
+#### POST
+PORT=8080 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
+
+```
+Running 30s test @ http://localhost:8080/customers
+  2 threads and 60 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    13.08ms    1.51ms  39.30ms   88.97%
+    Req/Sec     2.30k   141.42     2.73k    82.83%
+  137480 requests in 30.02s, 10.49MB read
+Requests/sec:   4579.28
+Transfer/sec:    357.76KB
+```
+
+#### GET
+wrk -c60 -d30s -t2 http://localhost:8080/customers
+
+```
+Running 30s test @ http://localhost:8080/customers
+  2 threads and 60 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   257.79ms   31.27ms 452.13ms   78.42%
+    Req/Sec   115.99     69.98   300.00     60.21%
+  6966 requests in 30.04s, 798.78MB read
+Requests/sec:    231.90
+Transfer/sec:     26.59MB
+```
