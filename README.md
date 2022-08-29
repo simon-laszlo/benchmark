@@ -6,7 +6,8 @@ Implementations:
 - rust, warp, mongo
 - java, spring, mongo
 - kotlin, spring, mongo
-- go
+- go, gin
+- quarkus / reactive
 
 I have used the most recent libraries.
 

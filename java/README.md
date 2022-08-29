@@ -1,0 +1,1 @@
+quarkus version: 2.11.3.Final
