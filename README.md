@@ -187,7 +187,7 @@ Requests/sec:   1200.50
 Transfer/sec:    144.42MB
 ```
 
-#### quarkus
+#### quarkus native
 #### POST
 PORT=8080 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
 
@@ -195,11 +195,11 @@ PORT=8080 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
 Running 30s test @ http://localhost:8080/customers
   2 threads and 60 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     6.74ms    1.62ms  57.79ms   93.11%
-    Req/Sec     4.48k   315.30     5.03k    87.17%
-  267723 requests in 30.02s, 20.43MB read
-Requests/sec:   8918.88
-Transfer/sec:    696.79KB
+    Latency    13.36ms    1.43ms  29.31ms   89.51%
+    Req/Sec     2.25k   139.61     2.58k    79.83%
+  134728 requests in 30.03s, 10.28MB read
+Requests/sec:   4485.90
+Transfer/sec:    350.46KB
 ```
 
 #### GET
@@ -209,14 +209,14 @@ wrk -c60 -d30s -t2 http://localhost:8080/customers
 Running 30s test @ http://localhost:8080/customers
   2 threads and 60 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    76.87ms   50.58ms 429.99ms   66.53%
-    Req/Sec   409.36     93.40   656.00     68.33%
-  24485 requests in 30.07s, 2.74GB read
-Requests/sec:    814.38
-Transfer/sec:     93.39MB
+    Latency    85.63ms   57.94ms 443.23ms   65.19%
+    Req/Sec   368.18     95.37   606.00     65.00%
+  22022 requests in 30.07s, 2.59GB read
+Requests/sec:    732.39
+Transfer/sec:     88.19MB
 ```
 
-#### quarkus reactive
+#### quarkus native reactive
 #### POST
 PORT=8080 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
 
@@ -224,11 +224,11 @@ PORT=8080 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
 Running 30s test @ http://localhost:8080/customers
   2 threads and 60 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    13.08ms    1.51ms  39.30ms   88.97%
-    Req/Sec     2.30k   141.42     2.73k    82.83%
-  137480 requests in 30.02s, 10.49MB read
-Requests/sec:   4579.28
-Transfer/sec:    357.76KB
+    Latency    12.85ms    1.37ms  28.86ms   90.91%
+    Req/Sec     2.34k   146.09     2.68k    84.00%
+  139869 requests in 30.02s, 10.67MB read
+Requests/sec:   4658.91
+Transfer/sec:    363.98KB
 ```
 
 #### GET
@@ -238,9 +238,20 @@ wrk -c60 -d30s -t2 http://localhost:8080/customers
 Running 30s test @ http://localhost:8080/customers
   2 threads and 60 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   257.79ms   31.27ms 452.13ms   78.42%
-    Req/Sec   115.99     69.98   300.00     60.21%
-  6966 requests in 30.04s, 798.78MB read
-Requests/sec:    231.90
-Transfer/sec:     26.59MB
+    Latency   256.80ms   23.76ms 327.30ms   68.40%
+    Req/Sec   116.25     63.45   280.00     60.17%
+  6980 requests in 30.03s, 840.24MB read
+Requests/sec:    232.40
+Transfer/sec:     27.98MB
 ```
+
+## Summary
+
+Language/runtime | GET (req/sec) | POST (req/sec)
+--- | --- | --- |
+Rust | 1510.35 | 20030.25 |
+Node js | 105.68 | 1653.49 |
+Node js PM2 6thread | 258.72 | 2492.65 |
+Go gin | 1200.50 | 24617.32 |
+Quarkus native | 732.39 | 4485.90 |
+Quarkus native reactive | 232.40 | 4658.91 |
