@@ -29,7 +29,7 @@ Creates a new customer in the mongo db.
 
 ## Testing
 ### Mongo db
-If you don't have yet any mongo on your localhost, then the simplest way to start with docker. Check the [docker readme](./docker/README).
+If you don't have yet any mongo on your localhost, then the simplest way to start with docker. Check the [docker readme](docker/README.md).
 
 
 #### Drop the customers collection
@@ -67,7 +67,7 @@ Lenovo X1 Carbon 7th gen
 - 15GB RAM
 - SAMSUNG MZVLB2T0HALB-000L7
 
-[wrk details](./WRK)
+[wrk details](WRK.md)
 
 ## Summary
 
