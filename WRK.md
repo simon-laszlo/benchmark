@@ -177,3 +177,61 @@ Running 30s test @ http://localhost:8080/customers
 Requests/sec:    232.40
 Transfer/sec:     27.98MB
 ```
+
+## graalvm spring webflux
+### POST
+PORT=8080 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
+
+```
+Running 30s test @ http://localhost:8080/customers
+  2 threads and 60 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    10.43ms    7.06ms 174.54ms   93.95%
+    Req/Sec     3.02k   660.56     4.38k    68.39%
+  180002 requests in 30.01s, 13.73MB read
+Requests/sec:   5997.62
+Transfer/sec:    468.56KB
+```
+
+### GET
+wrk -c60 -d30s -t2 http://localhost:8080/customers
+
+```
+Running 30s test @ http://localhost:8080/customers
+  2 threads and 60 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   563.90ms  120.13ms   1.23s    72.16%
+    Req/Sec    53.47     25.44   140.00     68.88%
+  3166 requests in 30.05s, 432.36MB read
+Requests/sec:    105.37
+Transfer/sec:     14.39MB
+```
+
+## graalvm native spring webflux
+### POST
+PORT=8080 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
+
+```
+Running 30s test @ http://localhost:8080/customers
+  2 threads and 60 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     7.06ms    6.48ms 147.90ms   93.73%
+    Req/Sec     4.66k     1.71k    6.91k    56.69%
+  277685 requests in 30.02s, 21.19MB read
+Requests/sec:   9251.40
+Transfer/sec:    722.77KB
+```
+
+### GET
+wrk -c60 -d30s -t2 http://localhost:8080/customers
+
+```
+Running 30s test @ http://localhost:8080/customers
+  2 threads and 60 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   555.10ms  142.20ms   1.21s    70.13%
+    Req/Sec    54.27     27.11   250.00     76.32%
+  3219 requests in 30.06s, 439.39MB read
+Requests/sec:    107.07
+Transfer/sec:     14.61MB
+```
