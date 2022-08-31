@@ -11,6 +11,6 @@ async fn main() {
     let customer_routes = routes::customer_routes(db).await;
 
     warp::serve(customer_routes)
-        .run(([127, 0, 0, 1], 3000))
+        .run(([0, 0, 0, 0], 3000))
         .await;
 }
