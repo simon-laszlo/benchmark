@@ -264,3 +264,32 @@ Running 30s test @ http://localhost:8080/customers
 Requests/sec:    119.88
 Transfer/sec:     16.39MB
 ```
+
+## graal vm 17 kotlin spring
+### POST
+PORT=8080 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
+
+```
+Running 30s test @ http://localhost:8080/customers
+  2 threads and 60 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     5.78ms    8.77ms 287.55ms   97.97%
+    Req/Sec     5.75k     1.11k    7.90k    72.90%
+  342199 requests in 30.02s, 23.88MB read
+Requests/sec:  11397.63
+Transfer/sec:    814.62KB
+```
+
+### GET
+wrk -c60 -d30s -t2 http://localhost:8080/customers
+
+```
+Running 30s test @ http://localhost:8080/customers
+  2 threads and 60 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    64.49ms   36.38ms 335.75ms   70.23%
+    Req/Sec   479.37     63.93   680.00     69.62%
+  28677 requests in 30.09s, 3.21GB read
+Requests/sec:    953.15
+Transfer/sec:    109.31MB
+```

@@ -82,3 +82,4 @@ Quarkus native reactive | 232.40 | 4658.91 |
 graal vm spring webflux| 105.37 | 5997.62 |
 graal vm native spring webflux | 107.07 | 9251.40 |
 openjdk 18 spring webflux | 119.88 | 11073.71 |
+graal vm 17 kotlin spring | 953.15 | 11397.63 |
