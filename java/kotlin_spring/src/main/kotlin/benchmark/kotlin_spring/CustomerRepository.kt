@@ -5,5 +5,8 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface CustomerRepository  : MongoRepository<Customer, String> {
+
+    fun findByGuid(guid: String?): Customer?
+
 }
 
