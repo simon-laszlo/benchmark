@@ -14,8 +14,9 @@ class CustomerController(val customerRepository: CustomerRepository) {
     fun getAllCustomers() : List<Customer> = customerRepository.findAll()
 
     @PostMapping(value = [""], consumes = [MediaType.APPLICATION_JSON_VALUE])
-    fun save(@RequestBody customer: Customer){
+    fun save(@RequestBody customer: Customer): String {
         customerRepository.save(customer)
+        return "ok"
     }
 
 }
