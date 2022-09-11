@@ -9,7 +9,7 @@ fastifyInst.get('/customers', async (request, reply) => {
 })
 
 fastifyInst.post('/customers', async (request, reply) => {
-  await insert(JSON.parse(request.body));
+  await insert(request.body);
   return "ok"
 })
 

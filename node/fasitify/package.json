@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "EXECUTION_DEBUG=true nodemon src/main.js",
-    "start": "NODE_ENV=production node --sparkplug src/main.js",
+    "start": "NODE_ENV=production node src/main.js",
     "pm2_start": "NODE_ENV=production pm2 start -i 6 src/main.js",
     "pm2_stop": "pm2 stop main"
   },

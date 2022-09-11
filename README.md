@@ -74,8 +74,12 @@ Lenovo X1 Carbon 7th gen
 Language/runtime | GET (req/sec) | POST (req/sec)
 --- | --- | --- |
 Rust | 1510.35 | 20030.25 |
-Node js | 105.68 | 1653.49 |
-Node js PM2 6thread | 258.72 | 2492.65 |
+Node js(express) | 105.68 | 1653.49 |
+Node js(express) PM2 6thread | 258.72 | 2492.65 |
+Node js(fasify) | 233.85 | 7790.63 |
+Node js(fastify) PM2 6thread | 596.13 | 13554.32 |
+Node js(restana) | 235.93 | 7548.98 |
+Node js(restana) PM2 6thread | 616.04 | 12893.91 |
 Go gin | 1200.50 | 24617.32 |
 Quarkus native | 732.39 | 4485.90 |
 Quarkus native reactive | 232.40 | 4658.91 |

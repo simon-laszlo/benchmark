@@ -29,7 +29,7 @@ Requests/sec:   1510.35
 Transfer/sec:    181.65MB
 ```
 
-## Node js
+## Node js(express)
 ### POST
 PORT=3001 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
 
@@ -60,7 +60,7 @@ Requests/sec:    105.68
 Transfer/sec:     12.71MB
 ```
 
-## Node js - pm2
+## Node js(express) - pm2
 ### POST
 PORT=3001 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
 
@@ -89,6 +89,122 @@ Running 30s test @ http://localhost:3001/customers
   Socket errors: connect 0, read 7764, write 0, timeout 0
 Requests/sec:    258.72
 Transfer/sec:     31.11MB
+```
+
+## Node js(fastify)
+### POST
+PORT=3000 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
+
+```
+Running 30s test @ http://localhost:3000/customers
+  2 threads and 60 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     7.77ms    2.16ms  69.63ms   91.63%
+    Req/Sec     3.91k   477.31     4.61k    90.67%
+  233804 requests in 30.01s, 37.01MB read
+Requests/sec:   7790.63
+Transfer/sec:      1.23MB
+```
+
+### GET
+wrk -c60 -d30s -t2 http://localhost:3000/customers
+
+```
+Running 30s test @ http://localhost:3000/customers
+  2 threads and 60 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   255.49ms   47.16ms 592.39ms   65.99%
+    Req/Sec   117.50     21.76   171.00     65.61%
+  7021 requests in 30.02s, 844.84MB read
+Requests/sec:    233.85
+Transfer/sec:     28.14MB
+```
+
+## Node js(fastify) - pm2
+### POST
+PORT=3000 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
+
+```
+Running 30s test @ http://localhost:3000/customers
+  2 threads and 60 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     4.59ms    2.58ms  61.99ms   84.14%
+    Req/Sec     6.81k     1.34k    8.61k    83.33%
+  406913 requests in 30.02s, 64.42MB read
+Requests/sec:  13554.32
+Transfer/sec:      2.15MB
+```
+
+### GET
+wrk -c60 -d30s -t2 http://localhost:3000/customers
+
+```
+Running 30s test @ http://localhost:3000/customers
+  2 threads and 60 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   100.63ms   32.95ms 408.92ms   70.03%
+    Req/Sec   299.88     38.24   410.00     71.86%
+  17918 requests in 30.06s, 2.11GB read
+Requests/sec:    596.13
+Transfer/sec:     71.73MB
+```
+
+## Node js(restana)
+### POST
+PORT=3000 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
+
+```
+Running 30s test @ http://localhost:3000/customers
+  2 threads and 60 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     7.96ms    1.47ms  37.37ms   89.51%
+    Req/Sec     3.79k   403.63     4.36k    81.33%
+  226561 requests in 30.01s, 35.65MB read
+Requests/sec:   7548.98
+Transfer/sec:      1.19MB
+```
+
+### GET
+wrk -c60 -d30s -t2 http://localhost:3000/customers
+
+```
+Running 30s test @ http://localhost:3000/customers
+  2 threads and 60 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   253.22ms   44.04ms 570.80ms   66.69%
+    Req/Sec   118.57     20.64   190.00     69.62%
+  7086 requests in 30.03s, 852.66MB read
+Requests/sec:    235.93
+Transfer/sec:     28.39MB
+```
+
+## Node js(restana) - pm2
+### POST
+PORT=3000 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
+
+```
+Running 30s test @ http://localhost:3000/customers
+  2 threads and 60 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     4.93ms    3.23ms  78.53ms   86.58%
+    Req/Sec     6.48k     1.51k   18.06k    82.33%
+  387781 requests in 30.07s, 61.02MB read
+Requests/sec:  12893.91
+Transfer/sec:      2.03MB
+```
+
+### GET
+wrk -c60 -d30s -t2 http://localhost:3000/customers
+
+```
+Running 30s test @ http://localhost:3000/customers
+  2 threads and 60 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    97.26ms   25.59ms 273.78ms   70.24%
+    Req/Sec   309.72     36.41   424.00     71.69%
+  18507 requests in 30.04s, 2.17GB read
+Requests/sec:    616.04
+Transfer/sec:     74.13MB
 ```
 
 ## GO - Gin
