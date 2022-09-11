@@ -273,11 +273,11 @@ PORT=8080 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
 Running 30s test @ http://localhost:8080/customers
   2 threads and 60 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency     5.78ms    8.77ms 287.55ms   97.97%
-    Req/Sec     5.75k     1.11k    7.90k    72.90%
-  342199 requests in 30.02s, 23.88MB read
-Requests/sec:  11397.63
-Transfer/sec:    814.62KB
+    Latency     3.78ms    3.81ms  91.20ms   95.57%
+    Req/Sec     8.43k     0.96k   13.52k    83.64%
+  503623 requests in 30.06s, 55.32MB read
+Requests/sec:  16752.50
+Transfer/sec:      1.84MB
 ```
 
 ### GET
@@ -287,9 +287,9 @@ wrk -c60 -d30s -t2 http://localhost:8080/customers
 Running 30s test @ http://localhost:8080/customers
   2 threads and 60 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    64.49ms   36.38ms 335.75ms   70.23%
-    Req/Sec   479.37     63.93   680.00     69.62%
-  28677 requests in 30.09s, 3.21GB read
-Requests/sec:    953.15
-Transfer/sec:    109.31MB
+    Latency    73.88ms   39.29ms 361.72ms   70.11%
+    Req/Sec   415.95     59.35   590.00     71.12%
+  24899 requests in 30.09s, 2.93GB read
+Requests/sec:    827.48
+Transfer/sec:     99.64MB
 ```
