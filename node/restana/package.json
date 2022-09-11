@@ -1,0 +1,25 @@
+{
+  "name": "restana",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "EXECUTION_DEBUG=true nodemon src/main.js",
+    "start": "NODE_ENV=production node --sparkplug src/main.js",
+    "pm2_start": "NODE_ENV=production pm2 start -i 6 src/main.js",
+    "pm2_stop": "pm2 stop main"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "mongodb": "^4.9.1",
+    "restana": "^4.9.6",
+    "start": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19",
+    "pm2": "^5.2.0"
+  }
+}

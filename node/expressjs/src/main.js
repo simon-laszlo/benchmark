@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(function (req, res, next) {
   res.removeHeader("x-powered-by");
   res.removeHeader("set-cookie");
-  res.removeHeader("Date");
+
   res.removeHeader("Connection");
   res.removeHeader("Vary");
   next();
