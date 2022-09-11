@@ -8,10 +8,8 @@ import org.springframework.data.mongodb.core.mapping.Document
 data class Customer(
 
         val guid: String?,
-        @BsonProperty("first_name")
-        val firstName: String?,
-        @BsonProperty("last_name")
-        val lastName: String?,
+        val first_name: String?,
+        val last_name: String?,
         val email: String?,
         val address: String?
 )
