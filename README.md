@@ -48,13 +48,13 @@ Inaccuracy can be avoided, because the operating system doesn't change the CPU f
 #### Create customers
 10 connection, 1 minute, 2 thread, throughput 100
 ```
-PORT=3000 wrk2 -c10 -d1m -t2 -R100 -s customers.lua http://localhost:$PORT/customers
+wrk2 -c10 -d1m -t2 -R100 -s customers.lua http://localhost:3000/customers
 ```
 
 #### Load test of GET customers list
 10 connection, 1 minute, 2 thread
 ```
-PORT=3000 wrk -c10 -d1m -t2 http://localhost:$PORT/customers
+wrk -c10 -d1m -t2 http://localhost:3000/customers
 ```
 
 ## Results

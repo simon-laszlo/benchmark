@@ -2,7 +2,7 @@
 
 ## RUST
 ### POST
-PORT=3000 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
+wrk -c60 -d30s -t2 -s customers.lua http://localhost:3000/customers
 ```
 Running 30s test @ http://localhost:3000/customers
   2 threads and 60 connections
@@ -31,7 +31,7 @@ Transfer/sec:    181.65MB
 
 ## Node js(express)
 ### POST
-PORT=3001 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
+wrk -c60 -d30s -t2 -s customers.lua http://localhost:3001/customers
 
 ```
 Running 30s test @ http://localhost:3001/customers
@@ -62,7 +62,7 @@ Transfer/sec:     12.71MB
 
 ## Node js(express) - pm2
 ### POST
-PORT=3001 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
+wrk -c60 -d30s -t2 -s customers.lua http://localhost:3001/customers
 
 ```
 Running 30s test @ http://localhost:3001/customers
@@ -93,7 +93,7 @@ Transfer/sec:     31.11MB
 
 ## Node js(fastify)
 ### POST
-PORT=3000 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
+wrk -c60 -d30s -t2 -s customers.lua http://localhost:3000/customers
 
 ```
 Running 30s test @ http://localhost:3000/customers
@@ -122,7 +122,7 @@ Transfer/sec:     28.14MB
 
 ## Node js(fastify) - pm2
 ### POST
-PORT=3000 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
+wrk -c60 -d30s -t2 -s customers.lua http://localhost:3000/customers
 
 ```
 Running 30s test @ http://localhost:3000/customers
@@ -151,7 +151,7 @@ Transfer/sec:     71.73MB
 
 ## Node js(restana)
 ### POST
-PORT=3000 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
+wrk -c60 -d30s -t2 -s customers.lua http://localhost:3000/customers
 
 ```
 Running 30s test @ http://localhost:3000/customers
@@ -180,7 +180,7 @@ Transfer/sec:     28.39MB
 
 ## Node js(restana) - pm2
 ### POST
-PORT=3000 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
+wrk -c60 -d30s -t2 -s customers.lua http://localhost:3000/customers
 
 ```
 Running 30s test @ http://localhost:3000/customers
@@ -209,7 +209,7 @@ Transfer/sec:     74.13MB
 
 ## GO - Gin
 ### POST
-PORT=3001 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
+wrk -c60 -d30s -t2 -s customers.lua http://localhost:3002/customers
 
 ```
 Running 30s test @ http://localhost:3002/customers
@@ -238,7 +238,7 @@ Transfer/sec:    144.42MB
 
 ## quarkus native
 ### POST
-PORT=8080 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
+wrk -c60 -d30s -t2 -s customers.lua http://localhost:8080/customers
 
 ```
 Running 30s test @ http://localhost:8080/customers
@@ -267,7 +267,7 @@ Transfer/sec:     88.19MB
 
 ## quarkus native reactive
 ### POST
-PORT=8080 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
+wrk -c60 -d30s -t2 -s customers.lua http://localhost:8080/customers
 
 ```
 Running 30s test @ http://localhost:8080/customers
@@ -296,7 +296,7 @@ Transfer/sec:     27.98MB
 
 ## graalvm 17 spring webflux
 ### POST
-PORT=8080 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
+wrk -c60 -d30s -t2 -s customers.lua http://localhost:8080/customers
 
 ```
 Running 30s test @ http://localhost:8080/customers
@@ -325,7 +325,7 @@ Transfer/sec:     14.39MB
 
 ## graalvm 17 native spring webflux
 ### POST
-PORT=8080 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
+wrk -c60 -d30s -t2 -s customers.lua http://localhost:8080/customers
 
 ```
 Running 30s test @ http://localhost:8080/customers
@@ -354,7 +354,7 @@ Transfer/sec:     14.61MB
 
 ## openjdk 18 spring webflux
 ### POST
-PORT=8080 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
+wrk -c60 -d30s -t2 -s customers.lua http://localhost:8080/customers
 
 ```
 Running 30s test @ http://localhost:8080/customers
@@ -383,7 +383,7 @@ Transfer/sec:     16.39MB
 
 ## graal vm 17 kotlin spring
 ### POST
-PORT=8080 wrk -c60 -d30s -t2 -s customers.lua http://localhost:$PORT/customers
+wrk -c60 -d30s -t2 -s customers.lua http://localhost:8080/customers
 
 ```
 Running 30s test @ http://localhost:8080/customers
