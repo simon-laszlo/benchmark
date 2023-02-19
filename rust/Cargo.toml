@@ -16,3 +16,6 @@ futures = "^0.3"
 version = "^2.3.0"
 default-features = false
 features = ["async-std-runtime"]
+
+[profile.release]
+opt-level = 3
