@@ -37,7 +37,7 @@ pub async fn create_customer(
     .await
     .unwrap();
 
-  Ok(StatusCode::CREATED)
+  Ok(warp::reply::html("Ok"))
 }
 
 /// Gets a single customer from the data store
