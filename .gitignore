@@ -3,3 +3,11 @@ target/
 .mvn/
 target/
 .idea/
+gin
+.settings/
+.classpath
+.factorypath
+.project
+*.jar
+load.log
+wrk.log

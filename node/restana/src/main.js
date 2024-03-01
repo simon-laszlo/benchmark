@@ -21,5 +21,5 @@ service.post('/customers', (req, res) => {
     process.exit(1);
   }
 
-  service.start(3000);
+  service.start(8080);
 })();

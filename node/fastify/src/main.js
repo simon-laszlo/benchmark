@@ -24,7 +24,7 @@ const start = async () => {
       process.exit(1);
     }
       try {
-        await fastifyInst.listen({ port: 3000 })
+        await fastifyInst.listen({ port: 8080 })
       } catch (err) {
         fastifyInst.log.error(err)
         process.exit(1)

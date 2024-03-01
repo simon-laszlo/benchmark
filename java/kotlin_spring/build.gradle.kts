@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
 	id("org.springframework.boot") version "3.0.5"
 	id("io.spring.dependency-management") version "1.1.0"
+	id("org.graalvm.buildtools.native") version "0.10.1"
 	kotlin("jvm") version "1.8.20"
 	kotlin("plugin.spring") version "1.8.20"
 }
@@ -33,4 +34,21 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+graalvmNative {
+	binaries {
+		named("main") {
+			javaLauncher.set(javaToolchains.launcherFor {
+				languageVersion.set(JavaLanguageVersion.of(21))
+				vendor.set(JvmVendorSpec.matching("GraalVM Community"))
+			})
+			imageName.set("demo")
+			mainClass.set("benchmark.kotlin_spring.KotlinSpringApplicationKt")
+		}
+	}
+	binaries.all {
+		buildArgs.add("--verbose")
+	}
+	toolchainDetection.set(true)
 }
