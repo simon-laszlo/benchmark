@@ -1,13 +1,13 @@
-package benchmark.openjdk17_spring;
+package benchmark.openjdk_spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Openjdk17SpringApplication {
+public class OpenjdkSpringApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Openjdk17SpringApplication.class, args);
+		SpringApplication.run(OpenjdkSpringApplication.class, args);
 	}
 
 }

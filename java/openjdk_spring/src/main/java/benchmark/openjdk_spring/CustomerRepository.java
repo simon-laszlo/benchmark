@@ -1,4 +1,4 @@
-package benchmark.openjdk17_spring;
+package benchmark.openjdk_spring;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;

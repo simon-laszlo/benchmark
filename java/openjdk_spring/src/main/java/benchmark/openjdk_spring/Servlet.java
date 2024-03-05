@@ -1,4 +1,4 @@
-package benchmark.openjdk17_spring;
+package benchmark.openjdk_spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
@@ -13,7 +13,7 @@ public class Servlet {
 
     @Bean
     public ServletRegistrationBean<CustomerServlet> genericCustomServlet() {
-        ServletRegistrationBean<CustomerServlet> bean = new ServletRegistrationBean<>(servlet, "/customerss/*");
+        ServletRegistrationBean<CustomerServlet> bean = new ServletRegistrationBean<>(servlet, "/customers_vt/*");
         bean.setLoadOnStartup(1);
         return bean;
     }

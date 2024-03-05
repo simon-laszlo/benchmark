@@ -75,55 +75,69 @@ declare -A language9=(
 )
 
 declare -A languageA=(
-  [program]="spring java $(java -version 2>&1 | head -n1 | cut -d ' ' -f3 | tr -d '"')"
-  [directory]="../openjdk17_spring"
+  [program]="spring VirtualThread java $(java -version 2>&1 | head -n1 | cut -d ' ' -f3 | tr -d '"')"
+  [directory]="../openjdk_spring"
   [build]="./mvnw clean install"
-  [exec]="java -jar ./target/openjdk17_spring-0.0.1-SNAPSHOT.jar &"
+  [exec]="java -jar ./target/openjdk_spring-0.0.1-SNAPSHOT.jar &"
 )
 
 declare -A languageB=(
-  [program]="spring native $(java -version 2>&1 | head -n1 | cut -d ' ' -f3 | tr -d '"')"
+  [program]="spring VirtualThread native $(java -version 2>&1 | head -n1 | cut -d ' ' -f3 | tr -d '"')"
   [directory]="."
-  [build]="native-image -jar ./target/openjdk17_spring-0.0.1-SNAPSHOT.jar"
-  [exec]="./openjdk17_spring-0.0.1-SNAPSHOT &"
+  [build]="native-image -jar ./target/openjdk_spring-0.0.1-SNAPSHOT.jar"
+  [exec]="./openjdk_spring-0.0.1-SNAPSHOT &"
 )
 
 declare -A languageC=(
+  [program]="spring java $(java -version 2>&1 | head -n1 | cut -d ' ' -f3 | tr -d '"')"
+  [directory]="../openjdk_spring"
+  [build]="./mvnw clean install"
+  [exec]="java -jar ./target/openjdk_spring-0.0.1-SNAPSHOT.jar --spring.thread-executor=platform &"
+)
+
+declare -A languageD=(
+  [program]="spring native $(java -version 2>&1 | head -n1 | cut -d ' ' -f3 | tr -d '"')"
+  [directory]="."
+  [build]="native-image -jar ./target/openjdk_spring-0.0.1-SNAPSHOT.jar"
+  [exec]="./openjdk_spring-0.0.1-SNAPSHOT --spring.thread-executor=platform &"
+)
+
+declare -A languageE=(
   [program]="quarkus java $(java -version 2>&1 | head -n1 | cut -d ' ' -f3 | tr -d '"')"
   [directory]="../quarkus"
   [build]="./mvnw package -Dquarkus.package.type=uber-jar"
   [exec]="java -jar target/quarkus-1.0.0-SNAPSHOT-runner.jar &"
 )
 
-declare -A languageD=(
+declare -A languageF=(
   [program]="quarkus native"
   [directory]="."
   [build]="./mvnw package -Pnative -Dquarkus.native.container-build=true"
   [exec]="./target/quarkus-1.0.0-SNAPSHOT-runner &"
 )
 
-declare -A languageE=(
+declare -A languageG=(
   [program]="quarkus-reactive java $(java -version 2>&1 | head -n1 | cut -d ' ' -f3 | tr -d '"')"
   [directory]="../quarkus-reactive"
   [build]="./mvnw package -Dquarkus.package.type=uber-jar"
   [exec]="java -jar target/quarkus-reactive-1.0.0-SNAPSHOT-runner.jar &"
 )
 
-declare -A languageF=(
+declare -A languageH=(
   [program]="quarkus-reactive native"
   [directory]="."
   [build]="./mvnw package -Pnative -Dquarkus.native.container-build=true"
   [exec]="./target/quarkus-reactive-1.0.0-SNAPSHOT-runner &"
 )
 
-declare -A languageG=(
+declare -A languageI=(
   [program]="webflux java $(java -version 2>&1 | head -n1 | cut -d ' ' -f3 | tr -d '"')"
   [directory]="../webflux"
   [build]="./mvnw clean install"
   [exec]="java -jar ./target/webflux-0.0.1-SNAPSHOT.jar &"
 )
 
-declare -A languageH=(
+declare -A languageJ=(
   [program]="webflux native"
   [directory]="."
   [build]="native-image -jar ./target/webflux-0.0.1-SNAPSHOT.jar"
@@ -131,6 +145,7 @@ declare -A languageH=(
 )
 
 WRK="wrk -c90 -d30s -t3 http://localhost:8080/customers"
+WRK_POST="wrk -c60 -d30s -t2 -s customers.lua http://localhost:8080/customers"
 WRK_FILE=$script_dir/../../WRK.md
 
 table=""

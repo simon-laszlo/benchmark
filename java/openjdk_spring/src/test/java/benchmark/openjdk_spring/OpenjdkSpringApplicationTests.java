@@ -1,10 +1,10 @@
-package benchmark.openjdk17_spring;
+package benchmark.openjdk_spring;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Openjdk17SpringApplicationTests {
+class OpenjdkSpringApplicationTests {
 
 	@Test
 	void contextLoads() {

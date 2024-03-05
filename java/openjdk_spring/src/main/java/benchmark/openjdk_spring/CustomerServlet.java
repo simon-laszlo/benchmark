@@ -1,4 +1,4 @@
-package benchmark.openjdk17_spring;
+package benchmark.openjdk_spring;
 
 import java.io.IOException;
 
