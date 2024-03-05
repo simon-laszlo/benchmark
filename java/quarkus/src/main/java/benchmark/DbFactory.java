@@ -1,9 +1,8 @@
 package benchmark;
 
-import javax.enterprise.inject.Produces;
-import javax.inject.Inject;
-
 import com.mongodb.client.MongoClient;
+import jakarta.enterprise.inject.Produces;
+import jakarta.inject.Inject;
 
 public class DbFactory {
 

@@ -1,16 +1,16 @@
 package benchmark;
 
-import java.util.List;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
 
-import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import java.util.List;
 
 @Path("/customers")
 public class Routes {
 
-    @Inject 
+    @Inject
     private Handler customerService;
 
     @GET
