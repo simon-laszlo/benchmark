@@ -148,7 +148,7 @@ WRK="wrk -c90 -d30s -t3 http://localhost:8080/customers"
 WRK_POST="wrk -c60 -d30s -t2 -s customers.lua http://localhost:8080/customers"
 WRK_FILE=$script_dir/../WRK.md
 
-MEM=$(free | grep Mem | awk -F ' ' '{print $2')
+MEM=$(free | grep Mem | awk -F ' ' '{print $2'})
 
 table=""
 echo "# WRK details" > $WRK_FILE
