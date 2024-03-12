@@ -1,23 +1,23 @@
 Language/runtime | GET (req/sec) | max CPU usage % | max Memory usage (MB)
 --- | --- | --- | --- |
-rust | 4845.52 | 827.00 | 32 |
-go1.22.0 | 3705.24 | 985.50 | 102.4 |
-node v20.11.0 (express) | 439.67 | 143.00 | 262.4 |
-node v20.11.0 (express) PM2 6 threads | 1494.09 | - | - |
-node v20.11.0 (fastify) | 458.35 | 143.50 | 300.8 |
-node v20.11.0 (fastify) PM2 6 threads | 1470.77 | - | - |
-node v20.11.0 (restana) | 431.72 | 146.00 | 294.4 |
-node v20.11.0 (restana) PM2 6 threads | 1498.82 | - | - |
-kotlin - java 21.0.2 | 2828.53 | 1322.89 | 3379.2 |
-kotlin - native image java -21.0.2 | 430.53 | 653.50 | 921.6 |
-spring VirtualThread java 21.0.2 | 2894.16 | 1273.50 | 3353.6 |
-spring VirtualThread native 21.0.2 | 2577.95 | 1178.50 | 3328 |
-spring java 21.0.2 | 2471.56 | 1156.72 | 3372.8 |
-spring native 21.0.2 | 2391.68 | 1212.44 | 3129.6 |
-quarkus java 21.0.2 | 4436.30 | 1003.48 | 2432 |
-quarkus native | 956.12 | 507.50 | 326.4 |
-quarkus-reactive java 21.0.2 | 679.16 | 709.50 | 1331.2 |
-quarkus-reactive native | 316.39 | 337.00 | 166.4 |
-webflux java 21.0.2 | 506.47 | 1215.00 | 2163.2 |
-webflux native | 505.27 | 1162.50 | 2112 |
+rust | 5153.87 | 868.50 | 32.5518 |
+go1.22.1 | 3370.03 | 984.50 | 97.6553 |
+node v20.11.0 (express) | 377.02 | 141.50 | 260.414 |
+node v20.11.0 (express) PM2 6 threads | 1364.03 | - | - |
+node v20.11.0 (fastify) | 420.58 | 143.50 | 273.435 |
+node v20.11.0 (fastify) PM2 6 threads | 1349.51 | - | - |
+node v20.11.0 (restana) | 421.58 | 146.27 | 273.435 |
+node v20.11.0 (restana) PM2 6 threads | 1326.90 | - | - |
+kotlin - java 21.0.2 | 2288.76 | 1193.03 | 3164.03 |
+kotlin - native image java -21.0.2 | 434.78 | 665.00 | 1223.95 |
+spring VirtualThread java 21.0.2 | 2563.52 | 1237.50 | 3229.14 |
+spring VirtualThread native 21.0.2 | 2591.18 | 1262.00 | 3124.97 |
+spring java 21.0.2 | 2546.44 | 1247.26 | 3235.65 |
+spring native 21.0.2 | 2455.66 | 1293.00 | 3437.47 |
+quarkus java 21.0.2 | 4530.98 | 1069.15 | 2298.15 |
+quarkus native | 1062.12 | 530.00 | 273.435 |
+quarkus-reactive java 21.0.2 | 710.10 | 744.50 | 1347.64 |
+quarkus-reactive native | 368.62 | 361.00 | 130.207 |
+webflux java 21.0.2 | 577.34 | 1288.50 | 2031.23 |
+webflux native | 549.86 | 1326.50 | 2037.74 |
 
