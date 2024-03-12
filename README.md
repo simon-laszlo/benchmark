@@ -3,7 +3,7 @@
 Simple REST server implementations to test the programming languages and runtimes in a "life" scenario. The projects have same architecture: model, db, handler, route.
 
 Functions:
-- GET -> return the customer list from the mongo DB
+- GET -> return the customer list (1000 items) from the mongo DB
 - POST -> store new customer in the mongo DB
 
 Implementations:
@@ -14,7 +14,7 @@ Implementations:
 - go, gin
 - quarkus / reactive
 
-I have used the most recent libraries.
+The project have used the most recent libraries.
 
 ## Endpoints
 ### The JSON
@@ -31,19 +31,37 @@ Object structure of the mongo collection :
 }
 ```
 
-### GET http://localhost:{port}/customers
+### GET http://localhost:8080/customers
 
 Returns list of the customers in JSON format.
 
-### POST http://localhost:{port}/customers
+### POST http://localhost:8080/customers
 
 Creates a new customer in the mongo db.
 
 ## Testing
-### Mongo db
+
+### Docker
+
+The most simple way to execute the tests:
+
+```
+docker build -t benchmark .
+docker run --privileged -d -v /home/lsimon/dev/benchmark/:/opt/benchmark benchmark
+```
+
+### Localhost
+
+#### Mongo db
 
 If you don't have yet any mongo on your localhost, then the simplest way to start with docker. Check the [docker readme](docker/README.md).
 
+#### Execute the tests
+
+```
+cd wrk
+./exec.sh
+```
 
 #### Drop the customers collection
 

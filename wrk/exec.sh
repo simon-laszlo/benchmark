@@ -4,7 +4,7 @@ script_dir=$PWD
 
 declare -A language0=(
   [program]="rust"
-  [directory]="../../rust"
+  [directory]="../rust"
   [build]="cargo build --release"
   [exec]="./target/release/rust_mongo &"
 )
@@ -12,7 +12,7 @@ declare -A language0=(
 declare -A language1=(
   [program]="$(go version | cut -d ' ' -f3)"
   [directory]="../go"
-  [build]="go build -ldflags '-s -w' ."
+  [build]="go build -buildvcs=false -ldflags '-s -w' ."
   [exec]="GIN_MODE=release ./gin &"
 )
 
@@ -146,7 +146,9 @@ declare -A languageJ=(
 
 WRK="wrk -c90 -d30s -t3 http://localhost:8080/customers"
 WRK_POST="wrk -c60 -d30s -t2 -s customers.lua http://localhost:8080/customers"
-WRK_FILE=$script_dir/../../WRK.md
+WRK_FILE=$script_dir/../WRK.md
+
+MEM=$(free | grep Mem | awk -F ' ' '{print $2')
 
 table=""
 echo "# WRK details" > $WRK_FILE
@@ -174,8 +176,8 @@ for language in ${!language@}; do
 
   if [[ -z "${language[stop]+unset}" ]]; then
     kill $pid
-    max_memory=$(grep -v Time $script_dir/load.log | grep . | awk -F ' ' '{print $15*640}' | sort -n | tail -1)
-    max_cpu=$(grep -v Time $script_dir/load.log | grep . | awk -F ' ' '{print $9}' | sort -n | tail -1)
+    max_memory=$(grep -v Time $script_dir/load.log | grep . | awk -F ' ' '{print $14}' | tail -1 | awk -v mem="$MEM" '{print (mem/100)*$1/1000}')
+    max_cpu=$(grep -v Time $script_dir/load.log | grep . | awk -F ' ' '{print $8}' | sort -n | tail -1)
   else
     eval ${language[stop]}
     max_cpu="-"
@@ -188,6 +190,6 @@ for language in ${!language@}; do
 
 done
 
-echo "Language/runtime | GET (req/sec) | max CPU usage % | max Memory usage (MB)" > $script_dir/../../TABLE_GET.md
-echo "--- | --- | --- | --- |" >> $script_dir/../../TABLE_GET.md
-echo "$table" >> $script_dir/../../TABLE_GET.md
+echo "Language/runtime | GET (req/sec) | max CPU usage % | max Memory usage (MB)" > $script_dir/../TABLE_GET.md
+echo "--- | --- | --- | --- |" >> $script_dir/../TABLE_GET.md
+echo "$table" >> $script_dir/../TABLE_GET.md
