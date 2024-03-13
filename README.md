@@ -47,7 +47,7 @@ The most simple way to execute the tests:
 
 ```
 docker build -t benchmark .
-docker run --privileged -d -v /home/lsimon/dev/benchmark/:/opt/benchmark benchmark
+docker run --privileged -p 8080:8080 -d -v $(pwd):/opt/benchmark benchmark
 ```
 
 ### Localhost
