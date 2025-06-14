@@ -77,70 +77,70 @@ declare -A language9=(
 declare -A languageA=(
   [program]="spring VirtualThread java $(java -version 2>&1 | head -n1 | cut -d ' ' -f3 | tr -d '"')"
   [directory]="../openjdk_spring"
-  [build]="JAVA_HOME=/usr/lib/jvm/java-21-openjdk/ ./mvnw clean install"
-  [exec]="/usr/lib/jvm/java-21-openjdk/bin/java -jar ./target/openjdk_spring-0.0.1-SNAPSHOT.jar &"
+  [build]="./mvnw clean install"
+  [exec]="java -jar ./target/openjdk_spring-0.0.1-SNAPSHOT.jar &"
 )
 
 declare -A languageB=(
   [program]="spring VirtualThread native $(java -version 2>&1 | head -n1 | cut -d ' ' -f3 | tr -d '"')"
   [directory]="."
-  [build]="JAVA_HOME=/usr/lib/jvm/java-21-graalvm ./mvnw -Pnative native:compile"
+  [build]="./mvnw -Pnative native:compile"
   [exec]="./target/openjdk_spring &"
 )
 
 declare -A languageC=(
   [program]="spring java $(java -version 2>&1 | head -n1 | cut -d ' ' -f3 | tr -d '"')"
   [directory]="../openjdk_spring"
-  [build]="JAVA_HOME=/usr/lib/jvm/java-21-openjdk/ ./mvnw clean install"
-  [exec]="/usr/lib/jvm/java-21-openjdk/bin/java -jar ./target/openjdk_spring-0.0.1-SNAPSHOT.jar --spring.thread-executor=platform &"
+  [build]="./mvnw clean install"
+  [exec]="java -jar ./target/openjdk_spring-0.0.1-SNAPSHOT.jar --spring.thread-executor=platform &"
 )
 
 declare -A languageD=(
   [program]="spring native $(java -version 2>&1 | head -n1 | cut -d ' ' -f3 | tr -d '"')"
   [directory]="."
-  [build]="JAVA_HOME=/usr/lib/jvm/java-21-graalvm ./mvnw -Pnative native:compile"
+  [build]="./mvnw -Pnative native:compile"
   [exec]="./target/openjdk_spring --spring.thread-executor=platform &"
 )
 
 declare -A languageE=(
   [program]="quarkus java $(java -version 2>&1 | head -n1 | cut -d ' ' -f3 | tr -d '"')"
   [directory]="../quarkus"
-  [build]="JAVA_HOME=/usr/lib/jvm/java-21-openjdk/ ./mvnw package -Dquarkus.package.type=uber-jar"
-  [exec]="/usr/lib/jvm/java-21-openjdk/bin/java -jar target/quarkus-1.0.0-SNAPSHOT-runner.jar &"
+  [build]="./mvnw package -Dquarkus.package.type=uber-jar"
+  [exec]="java -jar target/quarkus-1.0.0-SNAPSHOT-runner.jar &"
 )
 
 declare -A languageF=(
   [program]="quarkus native"
   [directory]="."
-  [build]="JAVA_HOME=/usr/lib/jvm/java-21-openjdk/ ./mvnw package -Pnative -Dquarkus.native.container-build=true"
+  [build]="./mvnw package -Pnative -Dquarkus.native.container-build=true"
   [exec]="./target/quarkus-1.0.0-SNAPSHOT-runner &"
 )
 
 declare -A languageG=(
   [program]="quarkus-reactive java $(java -version 2>&1 | head -n1 | cut -d ' ' -f3 | tr -d '"')"
   [directory]="../quarkus-reactive"
-  [build]="JAVA_HOME=/usr/lib/jvm/java-21-openjdk/ ./mvnw package -Dquarkus.package.type=uber-jar"
-  [exec]="/usr/lib/jvm/java-21-openjdk/bin/java -jar target/quarkus-reactive-1.0.0-SNAPSHOT-runner.jar &"
+  [build]="./mvnw package -Dquarkus.package.type=uber-jar"
+  [exec]="java -jar target/quarkus-reactive-1.0.0-SNAPSHOT-runner.jar &"
 )
 
 declare -A languageH=(
   [program]="quarkus-reactive native"
   [directory]="."
-  [build]="JAVA_HOME=/usr/lib/jvm/java-21-openjdk/ ./mvnw package -Pnative -Dquarkus.native.container-build=true"
+  [build]="./mvnw package -Pnative -Dquarkus.native.container-build=true"
   [exec]="./target/quarkus-reactive-1.0.0-SNAPSHOT-runner &"
 )
 
 declare -A languageI=(
   [program]="webflux java $(java -version 2>&1 | head -n1 | cut -d ' ' -f3 | tr -d '"')"
   [directory]="../webflux"
-  [build]="JAVA_HOME=/usr/lib/jvm/java-21-openjdk/ ./mvnw clean install"
-  [exec]="/usr/lib/jvm/java-21-openjdk/bin/java -jar ./target/webflux-0.0.1-SNAPSHOT.jar &"
+  [build]="./mvnw clean install"
+  [exec]="java -jar ./target/webflux-0.0.1-SNAPSHOT.jar &"
 )
 
 declare -A languageJ=(
   [program]="webflux native"
   [directory]="."
-  [build]="JAVA_HOME=/usr/lib/jvm/java-21-graalvm ./mvnw -Pnative native:compile"
+  [build]="./mvnw -Pnative native:compile"
   [exec]="./target/webflux &"
 )
 

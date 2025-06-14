@@ -1,7 +1,7 @@
 FROM ubuntu
 RUN apt-get update \
     && apt-get upgrade -y \
-    && apt-get install -y wrk sysstat docker-buildx wget curl build-essential docker-compose
+    && apt-get install -y wrk sysstat docker-buildx wget curl build-essential docker-compose python3-distutils-extra zlib1g-dev
 RUN wget https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-21.0.2/graalvm-community-jdk-21.0.2_linux-x64_bin.tar.gz
 RUN tar -xzf graalvm-community-jdk-21.0.2_linux-x64_bin.tar.gz -C /opt/
 ENV PATH /opt/graalvm-community-openjdk-21.0.2+13.1/bin:$PATH
