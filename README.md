@@ -1,28 +1,40 @@
-# REST-mongo benchmark
+# REST-Mongo Benchmark
 
-Simple REST server implementations to test the programming languages and runtimes in a "life" scenario. The projects have same architecture: model, db, handler, route.
+This project benchmarks simple REST API implementations using different programming languages and runtimes in a real-world ("life") scenario. Each implementation follows the same architecture structure:
 
-Functions:
-- GET -> return the customer list (1000 items) from the mongo DB
-- POST -> store new customer in the mongo DB
+- **Model**
+- **Database**
+- **Handler**
+- **Routing**
 
-Implementations:
-- node js, express, mongo
-- rust, warp, mongo
-- java, spring, mongo
-- kotlin, spring, mongo
-- go, gin
-- quarkus / reactive
+## Features
 
-The project have used the most recent libraries.
+- `GET /customers` → Returns a list of 1,000 customer documents from MongoDB.
+- `POST /customers` → Inserts a new customer into MongoDB.
 
-## Endpoints
-### The JSON
+## Implementations
 
-Object structure of the mongo collection :
+The following language/runtime stacks are included:
 
-```
-{    
+- **Node.js** with Express + MongoDB
+- **Rust** with Warp + MongoDB
+- **Java** with Spring Boot + MongoDB
+- **Kotlin** with Spring Boot + MongoDB
+- **Go** with Gin + MongoDB
+- **Java** with Quarkus (Reactive) + MongoDB
+
+All implementations use up-to-date libraries as of the latest commit.
+
+---
+
+## API Endpoints
+
+### Data Format
+
+Example document structure used in MongoDB:
+
+```json
+{
   "guid": "1234567890",
   "first_name": "Test",
   "last_name": "User",
@@ -31,56 +43,59 @@ Object structure of the mongo collection :
 }
 ```
 
-### GET http://localhost:8080/customers
+### GET /customers
 
-Returns list of the customers in JSON format.
+Returns a JSON array of customers (1,000 entries).
 
 ### POST http://localhost:8080/customers
 
-Creates a new customer in the mongo db.
+Accepts a JSON object and inserts it into the MongoDB customers collection.
 
 ## Testing
 
-### Docker
+### Option 1: Docker
 
-The most simple way to execute the tests:
+To build and run the benchmark environment using Docker:
 
 ```
 docker build -t benchmark .
 docker run --privileged -p 8080:8080 -d -v $(pwd):/opt/benchmark benchmark
 ```
 
-### Localhost
+### Option 2: Run Locally
 
 #### Mongo db
 
-If you don't have yet any mongo on your localhost, then the simplest way to start with docker. Check the [docker readme](docker/README.md).
+If you don’t have MongoDB installed, the easiest way to get started is using Docker. See the [docker readme](docker/README.md) for setup instructions.
 
-#### Execute the tests
+#### Running Tests
 
 ```
 cd wrk
 ./exec.sh
 ```
 
-#### Drop the customers collection
+#### Cleaning the Collection
+
+To drop the customers collection:
 
 ```
 ./docker/clean.sh
 ```
 
-### WRK and WRK2
+### Load Testing (WRK / WRK2)
 
-I choosed wrk for the testing. It's necessary to change the CPU governor before the test to be more accurate :
+[WRK](https://github.com/wg/wrk) and [WRK2](https://github.com/giltene/wrk2) were used for benchmarking.
+To ensure consistent results, it's recommended to set the CPU governor to performance:
 
 ```
 sudo cpupower frequency-set -g performance
 ```
 
-Inaccuracy can be avoided, because the operating system doesn't change the CPU frequency quick enough, and the system load can vary between implementations.
+This helps avoid frequency scaling variability between implementations.
 
 
-#### Create customers
+#### Create customers (POST)
 
 10 connection, 1 minute, 2 thread, throughput 100
 
@@ -88,7 +103,7 @@ Inaccuracy can be avoided, because the operating system doesn't change the CPU f
 wrk2 -c10 -d1m -t2 -R100 -s customers.lua http://localhost:3000/customers
 ```
 
-#### Load test of GET customers list
+#### Load Test Customer List (GET)
 
 10 connection, 1 minute, 2 thread
 
@@ -98,9 +113,9 @@ wrk -c10 -d1m -t2 http://localhost:3000/customers
 
 ## Results
 
-The GET test has been executed always with the initialized db with 1.000 items.
+All GET tests were executed against a preloaded database containing 1,000 customer records.
 
-### Environment
+### Test Environment
 
 HP Elitebook G10 845
 
@@ -112,4 +127,4 @@ HP Elitebook G10 845
 
 ## Summary
 
-You can find [here](TABLE_GET.md) the GET benchmark results.
+See [result](TABLE_GET.md) for the summarized GET benchmark results across all implementations.
