@@ -1,8 +1,6 @@
-version: '3.7'
-
 services:
     mongodb:
-        image: mongo:5.0.13 
+        image: mongo:8.0.10 
         container_name: benchmark-mongo
         ports:
             - 27017:27017

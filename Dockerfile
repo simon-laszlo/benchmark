@@ -8,7 +8,7 @@ ENV PATH /opt/graalvm-community-openjdk-21.0.2+13.1/bin:$PATH
 ENV JAVA_HOME /opt/graalvm-community-openjdk-21.0.2+13.1
 WORKDIR /root
 ENV NVM_DIR /usr/local/nvm
-ENV NODE_VERSION v20.11.1
+ENV NODE_VERSION v24.2.0
 RUN mkdir -p $NVM_DIR
 RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm install $NODE_VERSION"
@@ -16,8 +16,8 @@ ENV NODE_PATH $NVM_DIR/versions/node/$NODE_VERSION/lib/node_modules
 ENV PATH $NVM_DIR/versions/node/$NODE_VERSION/bin:$PATH
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 ENV PATH /root/.cargo/bin:$PATH
-RUN wget https://go.dev/dl/go1.22.1.linux-amd64.tar.gz
-RUN tar -C /usr/local -xzf go1.22.1.linux-amd64.tar.gz
+RUN wget https://go.dev/dl/go1.24.4.linux-amd64.tar.gz
+RUN tar -C /usr/local -xzf go1.24.4.linux-amd64.tar.gz
 ENV PATH $PATH:/usr/local/go/bin
 WORKDIR /opt/benchmark/
 COPY docker ./docker

@@ -7,5 +7,5 @@ cargo build --release
 
 ## Start
 ```
-./target/release/rust
+./target/release/rust_mongo
 ```

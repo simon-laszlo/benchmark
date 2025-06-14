@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.2.3</version>
+		<version>3.5.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>benchmark</groupId>
@@ -38,6 +38,17 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.graalvm.buildtools</groupId>
+				<artifactId>native-maven-plugin</artifactId>
+				<version>0.10.6</version> <!-- or newer -->
+				<extensions>true</extensions>
+				<configuration>
+					<buildArgs>
+						<buildArg>--no-fallback</buildArg>
+					</buildArgs>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
