@@ -2,10 +2,10 @@ FROM ubuntu
 RUN apt-get update \
     && apt-get upgrade -y \
     && apt-get install -y wrk sysstat docker-buildx wget curl build-essential docker-compose python3-distutils-extra zlib1g-dev
-RUN wget https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-21.0.2/graalvm-community-jdk-21.0.2_linux-x64_bin.tar.gz
-RUN tar -xzf graalvm-community-jdk-21.0.2_linux-x64_bin.tar.gz -C /opt/
-ENV PATH /opt/graalvm-community-openjdk-21.0.2+13.1/bin:$PATH
-ENV JAVA_HOME /opt/graalvm-community-openjdk-21.0.2+13.1
+RUN wget https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-24.0.1/graalvm-community-jdk-24.0.1_linux-x64_bin.tar.gz
+RUN tar -xzf graalvm-community-jdk-24.0.1_linux-x64_bin.tar.gz -C /opt/
+ENV PATH /opt/graalvm-community-openjdk-24.0.1+9.1/bin:$PATH
+ENV JAVA_HOME /opt/graalvm-community-openjdk-24.0.1+9.1
 WORKDIR /root
 ENV NVM_DIR /usr/local/nvm
 ENV NODE_VERSION v24.2.0

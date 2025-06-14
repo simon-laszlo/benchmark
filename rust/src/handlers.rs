@@ -1,4 +1,5 @@
 use std::convert::Infallible;
+use std::sync::Arc;
 
 use crate::models::Customer;
 use futures::stream::TryStreamExt;
@@ -6,15 +7,17 @@ use mongodb::bson::doc;
 use mongodb::{options::FindOptions, Database as Db};
 use warp::{self, http::StatusCode};
 
-pub async fn list_customers(db: Db) -> Result<impl warp::Reply, Infallible> {
+pub async fn list_customers(db: Arc<Db>) -> Result<impl warp::Reply, Infallible> {
   let typed_collection = db.collection::<Customer>("customers");
-  let filter = doc! {};
   let find_options = FindOptions::builder().build();
-  let mut cursor = typed_collection.find(filter, find_options).await.unwrap();
-  let mut customers = Vec::new();
-  while let Some(customer) = cursor.try_next().await.unwrap() {
-    customers.push(customer);
-  }
+  let customers: Vec<Customer> = typed_collection
+        .find(doc! {}, find_options)
+        .await
+        .unwrap()
+        .try_collect()
+        .await
+        .unwrap();
+
   Ok(warp::reply::json(&customers))
 }
 
@@ -28,7 +31,7 @@ pub async fn list_customers(db: Db) -> Result<impl warp::Reply, Infallible> {
 /// * `db` - `Db` -> mongo db
 pub async fn create_customer(
   new_customer: Customer,
-  db: Db,
+  db: Arc<Db>,
 ) -> Result<impl warp::Reply, Infallible> {
   let typed_collection = db.collection::<Customer>("customers");
 
@@ -48,7 +51,7 @@ pub async fn create_customer(
 ///
 /// * `guid` - String -> the id of the customer to retrieve
 /// * `db` - `Db` -> the thread safe data store
-pub async fn get_customer(guid: String, db: Db) -> Result<Box<dyn warp::Reply>, Infallible> {
+pub async fn get_customer(guid: String, db: Arc<Db>) -> Result<Box<dyn warp::Reply>, Infallible> {
   let typed_collection = db.collection::<Customer>("customers");
   let filter = doc! { "guid": guid };
   let find_options = FindOptions::builder().build();
@@ -73,7 +76,7 @@ pub async fn get_customer(guid: String, db: Db) -> Result<Box<dyn warp::Reply>, 
 pub async fn update_customer(
   guid: String,
   updated_customer: Customer,
-  db: Db,
+  db: Arc<Db>,
 ) -> Result<impl warp::Reply, Infallible> {
   let typed_collection = db.collection::<Customer>("customers");
   let filter = doc! { "guid": guid };
@@ -95,7 +98,7 @@ pub async fn update_customer(
 ///
 /// * `guid` - String -> the id of the customer to delete
 /// * `db` - `Db` -> thread safe data store
-pub async fn delete_customer(guid: String, db: Db) -> Result<impl warp::Reply, Infallible> {
+pub async fn delete_customer(guid: String, db: Arc<Db>) -> Result<impl warp::Reply, Infallible> {
 
   let typed_collection = db.collection::<Customer>("customers");
   let filter = doc! { "guid": guid };

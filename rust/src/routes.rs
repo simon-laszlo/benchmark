@@ -1,5 +1,6 @@
 use core::future::Future;
 use std::convert::Infallible;
+use std::sync::Arc;
 use warp::Filter;
 use mongodb::Database as Db;
 
@@ -11,6 +12,7 @@ pub async fn customer_routes(
     db: impl Future<Output = Db>,
 ) -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone {
     let db_inst = db.await;
+    let db_inst = Arc::new(db_inst);
     get_customer(db_inst.clone())
         .or(update_customer(db_inst.clone()))
         .or(delete_customer(db_inst.clone()))
@@ -20,7 +22,7 @@ pub async fn customer_routes(
 
 /// GET /customers
 fn customers_list(
-    db: Db,
+    db: Arc<Db>,
 ) -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone {
     warp::path("customers")
         .and(warp::get())
@@ -30,7 +32,7 @@ fn customers_list(
 
 /// POST /customers
 fn create_customer(
-    db: Db,
+    db: Arc<Db>,
 ) -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone {
     warp::path("customers")
         .and(warp::post())
@@ -41,7 +43,7 @@ fn create_customer(
 
 /// GET /customers/{guid}
 fn get_customer(
-    db: Db,
+    db: Arc<Db>,
 ) -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone {
     warp::path!("customers" / String)
         .and(warp::get())
@@ -51,7 +53,7 @@ fn get_customer(
 
 /// PUT /customers/{guid}
 fn update_customer(
-    db: Db,
+    db: Arc<Db>,
 ) -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone {
     warp::path!("customers" / String)
         .and(warp::put())
@@ -62,7 +64,7 @@ fn update_customer(
 
 /// DELETE /customers/{guid}
 fn delete_customer(
-    db: Db
+    db: Arc<Db>
 ) -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone {
     warp::path!("customers" / String)
         .and(warp::delete())
@@ -70,7 +72,7 @@ fn delete_customer(
         .and_then(handlers::delete_customer)
 }
 
-fn with_db(db: Db) -> impl Filter<Extract = (Db,), Error = Infallible> + Clone {
+fn with_db(db: Arc<Db>) -> impl Filter<Extract = (Arc<Db>,), Error = Infallible> + Clone {
     warp::any().map(move || db.clone())
 }
 
