@@ -59,7 +59,7 @@ To build and run the benchmark environment using Docker:
 
 ```
 docker build -t benchmark .
-docker run --privileged -p 8080:8080 -d -v $(pwd):/opt/benchmark benchmark
+docker run --rm --privileged -p 8080:8080 -d -v $(pwd):/opt/benchmark benchmark
 ```
 
 ### Option 2: Run Locally
