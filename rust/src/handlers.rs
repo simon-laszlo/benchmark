@@ -2,19 +2,18 @@ use std::convert::Infallible;
 
 use crate::models::Customer;
 use futures::stream::TryStreamExt;
+use futures::StreamExt;
 use mongodb::bson::doc;
 use mongodb::{options::FindOptions, Database as Db};
 use warp::{self, http::StatusCode};
 
 pub async fn list_customers(db: Db) -> Result<impl warp::Reply, Infallible> {
   let typed_collection = db.collection::<Customer>("customers");
-  let filter = doc! {};
-  let find_options = FindOptions::builder().build();
-  let mut cursor = typed_collection.find(filter, find_options).await.unwrap();
-  let mut customers = Vec::new();
-  while let Some(customer) = cursor.try_next().await.unwrap() {
-    customers.push(customer);
-  }
+  let cursor = typed_collection.find(None, None).await.unwrap();
+  let customers: Vec<Customer> = cursor
+      .filter_map(|doc| async { doc.ok() }) // skip errors
+      .collect()
+      .await;
   Ok(warp::reply::json(&customers))
 }
 
