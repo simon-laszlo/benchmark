@@ -105,7 +105,7 @@ declare -A languageD=(
 declare -A languageE=(
   [program]="quarkus java $(java -version 2>&1 | head -n1 | cut -d ' ' -f3 | tr -d '"')"
   [directory]="../quarkus"
-  [build]="./mvnw clean package -Dquarkus.package.type=uber-jar"
+  [build]="./mvnw clean package -Dquarkus.package.jar.type=uber-jar"
   [exec]="java -jar target/quarkus-1.0.0-SNAPSHOT-runner.jar &"
 )
 
@@ -119,7 +119,7 @@ declare -A languageF=(
 declare -A languageG=(
   [program]="quarkus-reactive java $(java -version 2>&1 | head -n1 | cut -d ' ' -f3 | tr -d '"')"
   [directory]="../quarkus-reactive"
-  [build]="./mvnw clean package -Dquarkus.package.type=uber-jar"
+  [build]="./mvnw clean package -Dquarkus.package.jar.type=uber-jar"
   [exec]="java -jar target/quarkus-reactive-1.0.0-SNAPSHOT-runner.jar &"
 )
 
