@@ -3,7 +3,7 @@
 script_dir=$PWD
 
 declare -A language0=(
-  [program]="rust"
+  [program]="rust warp"
   [directory]="../rust"
   [build]="cargo build --release"
   [exec]="./target/release/rust_mongo &"

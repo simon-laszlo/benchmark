@@ -1,6 +1,6 @@
 # WRK details
 
-## rust
+## rust warp
 ### GET
 
 wrk -c90 -d30s -t3 http://localhost:8080/customers
