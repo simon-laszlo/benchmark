@@ -20,16 +20,14 @@ public class WebfluxConfig {
 
 	@Bean
 	RouterFunction<ServerResponse> getCustomers() {
-		return RouterFunctions.route()
-				.GET("/customers", req -> ServerResponse.ok().body(customersRepository.findAll(), Customers.class))
+		return RouterFunctions.route().GET("/customers", req -> ServerResponse.ok()
+				.body(customersRepository.findAll(), Customers.class))
 				.build();
 	}
 
 	@Bean
 	RouterFunction<ServerResponse> setCustomers() {
-		return RouterFunctions.route().POST("/customers", req ->
-		req.bodyToMono(Customers.class)
-		   .flatMap(customersRepository::save)
-		   .then(ServerResponse.ok().bodyValue("ok"))).build();
+		return RouterFunctions.route().POST("/customers", req -> req.bodyToMono(Customers.class)
+				.flatMap(customersRepository::save).then(ServerResponse.ok().bodyValue("ok"))).build();
 	}
 }

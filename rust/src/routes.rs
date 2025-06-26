@@ -11,11 +11,12 @@ pub async fn customer_routes(
     db: impl Future<Output = Db>,
 ) -> impl Filter<Extract = impl warp::Reply, Error = warp::Rejection> + Clone {
     let db_inst = db.await;
-    get_customer(db_inst.clone())
+    let routes = get_customer(db_inst.clone())
         .or(update_customer(db_inst.clone()))
         .or(delete_customer(db_inst.clone()))
         .or(create_customer(db_inst.clone()))
-        .or(customers_list(db_inst.clone()))
+        .or(customers_list(db_inst.clone()));
+    routes
 }
 
 /// GET /customers
