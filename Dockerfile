@@ -4,21 +4,21 @@ RUN apt-get update \
     && apt-get install -y wrk sysstat docker-buildx wget curl build-essential docker-compose python3-distutils-extra zlib1g-dev
 RUN wget https://github.com/graalvm/graalvm-ce-builds/releases/download/jdk-21.0.2/graalvm-community-jdk-21.0.2_linux-x64_bin.tar.gz
 RUN tar -xzf graalvm-community-jdk-21.0.2_linux-x64_bin.tar.gz -C /opt/
-ENV PATH /opt/graalvm-community-openjdk-21.0.2+13.1/bin:$PATH
-ENV JAVA_HOME /opt/graalvm-community-openjdk-21.0.2+13.1
+ENV PATH=/opt/graalvm-community-openjdk-21.0.2+13.1/bin:$PATH
+ENV JAVA_HOME=/opt/graalvm-community-openjdk-21.0.2+13.1
 WORKDIR /root
-ENV NVM_DIR /usr/local/nvm
-ENV NODE_VERSION v24.2.0
+ENV NVM_DIR=/usr/local/nvm
+ENV NODE_VERSION=v24.2.0
 RUN mkdir -p $NVM_DIR
 RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 RUN /bin/bash -c "source $NVM_DIR/nvm.sh && nvm install $NODE_VERSION"
-ENV NODE_PATH $NVM_DIR/versions/node/$NODE_VERSION/lib/node_modules
-ENV PATH $NVM_DIR/versions/node/$NODE_VERSION/bin:$PATH
+ENV NODE_PATH=$NVM_DIR/versions/node/$NODE_VERSION/lib/node_modules
+ENV PATH=$NVM_DIR/versions/node/$NODE_VERSION/bin:$PATH
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-ENV PATH /root/.cargo/bin:$PATH
+ENV PATH=/root/.cargo/bin:$PATH
 RUN wget https://go.dev/dl/go1.24.4.linux-amd64.tar.gz
 RUN tar -C /usr/local -xzf go1.24.4.linux-amd64.tar.gz
-ENV PATH $PATH:/usr/local/go/bin
+ENV PATH=$PATH:/usr/local/go/bin
 WORKDIR /opt/benchmark/
 COPY docker ./docker
 COPY rust ./rust
