@@ -9,11 +9,11 @@ wrk -c90 -d30s -t3 http://localhost:8080/customers
 Running 30s test @ http://localhost:8080/customers
   3 threads and 90 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    16.81ms    0.92ms  23.00ms   71.04%
-    Req/Sec     1.79k    48.84     2.09k    74.56%
-  160603 requests in 30.02s, 18.86GB read
-Requests/sec:   5350.02
-Transfer/sec:    643.45MB
+    Latency    16.16ms    1.80ms  42.31ms   86.68%
+    Req/Sec     1.86k   144.44     2.11k    83.67%
+  167072 requests in 30.02s, 19.62GB read
+Requests/sec:   5566.23
+Transfer/sec:    669.45MB
 ```
 
 ## go1.24.4
@@ -25,11 +25,11 @@ wrk -c90 -d30s -t3 http://localhost:8080/customers
 Running 30s test @ http://localhost:8080/customers
   3 threads and 90 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    23.92ms   13.57ms 149.64ms   63.87%
-    Req/Sec     1.28k    76.89     1.60k    74.00%
-  115241 requests in 30.05s, 13.54GB read
-Requests/sec:   3835.32
-Transfer/sec:    461.40MB
+    Latency    22.11ms   12.64ms 122.11ms   63.49%
+    Req/Sec     1.39k    85.54     1.66k    72.22%
+  124738 requests in 30.05s, 14.65GB read
+Requests/sec:   4151.08
+Transfer/sec:    499.38MB
 ```
 
 ## node v24.2.0 (express)
@@ -41,12 +41,12 @@ wrk -c90 -d30s -t3 http://localhost:8080/customers
 Running 30s test @ http://localhost:8080/customers
   3 threads and 90 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   225.18ms  104.90ms   1.95s    96.59%
-    Req/Sec   135.98     28.98   260.00     74.64%
-  12187 requests in 30.02s, 1.43GB read
-  Socket errors: connect 0, read 0, write 0, timeout 14
-Requests/sec:    405.92
-Transfer/sec:     48.83MB
+    Latency   207.35ms  106.72ms   1.99s    97.06%
+    Req/Sec   148.77     24.35   212.00     71.11%
+  13349 requests in 30.02s, 1.57GB read
+  Socket errors: connect 0, read 0, write 0, timeout 12
+Requests/sec:    444.70
+Transfer/sec:     53.49MB
 ```
 
 ## node v24.2.0 (express) PM2 6 threads
@@ -58,11 +58,11 @@ wrk -c90 -d30s -t3 http://localhost:8080/customers
 Running 30s test @ http://localhost:8080/customers
   3 threads and 90 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    62.01ms   14.09ms 284.78ms   72.51%
-    Req/Sec   486.49     40.55   575.00     79.78%
-  43622 requests in 30.03s, 5.12GB read
-Requests/sec:   1452.67
-Transfer/sec:    174.73MB
+    Latency    56.95ms   12.95ms 312.32ms   72.09%
+    Req/Sec   529.86     44.28   626.00     78.22%
+  47509 requests in 30.04s, 5.58GB read
+Requests/sec:   1581.75
+Transfer/sec:    190.26MB
 ```
 
 ## node v24.2.0 (fastify)
@@ -74,12 +74,12 @@ wrk -c90 -d30s -t3 http://localhost:8080/customers
 Running 30s test @ http://localhost:8080/customers
   3 threads and 90 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   222.15ms  106.17ms   1.98s    96.69%
-    Req/Sec   138.19     28.90   222.00     72.19%
-  12387 requests in 30.02s, 1.46GB read
+    Latency   210.47ms  102.57ms   1.96s    96.91%
+    Req/Sec   145.93     23.75   212.00     59.89%
+  13093 requests in 30.02s, 1.54GB read
   Socket errors: connect 0, read 0, write 0, timeout 13
-Requests/sec:    412.58
-Transfer/sec:     49.65MB
+Requests/sec:    436.08
+Transfer/sec:     52.47MB
 ```
 
 ## node v24.2.0 (fastify) PM2 6 threads
@@ -91,11 +91,11 @@ wrk -c90 -d30s -t3 http://localhost:8080/customers
 Running 30s test @ http://localhost:8080/customers
   3 threads and 90 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    62.65ms   14.34ms 283.40ms   72.41%
-    Req/Sec   481.47     39.51   575.00     77.33%
-  43170 requests in 30.03s, 5.07GB read
-Requests/sec:   1437.52
-Transfer/sec:    172.98MB
+    Latency    58.18ms   13.49ms 291.31ms   73.05%
+    Req/Sec   518.55     42.18   616.00     80.00%
+  46494 requests in 30.03s, 5.46GB read
+Requests/sec:   1548.08
+Transfer/sec:    186.28MB
 ```
 
 ## node v24.2.0 (restana)
@@ -107,12 +107,12 @@ wrk -c90 -d30s -t3 http://localhost:8080/customers
 Running 30s test @ http://localhost:8080/customers
   3 threads and 90 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   214.30ms   96.10ms   1.99s    96.13%
-    Req/Sec   142.15     32.00   282.00     71.05%
-  12727 requests in 30.02s, 1.50GB read
-  Socket errors: connect 0, read 0, write 0, timeout 20
-Requests/sec:    423.98
-Transfer/sec:     51.02MB
+    Latency   207.13ms   96.93ms   1.98s    96.25%
+    Req/Sec   147.62     31.80   230.00     63.89%
+  13246 requests in 30.02s, 1.56GB read
+  Socket errors: connect 0, read 0, write 0, timeout 17
+Requests/sec:    441.21
+Transfer/sec:     53.09MB
 ```
 
 ## node v24.2.0 (restana) PM2 6 threads
@@ -124,11 +124,11 @@ wrk -c90 -d30s -t3 http://localhost:8080/customers
 Running 30s test @ http://localhost:8080/customers
   3 threads and 90 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    63.00ms   13.70ms 343.34ms   75.00%
-    Req/Sec   478.80     39.85   560.00     79.00%
-  42934 requests in 30.03s, 5.05GB read
-Requests/sec:   1429.47
-Transfer/sec:    172.01MB
+    Latency    59.05ms   12.93ms 306.89ms   76.22%
+    Req/Sec   511.14     42.08   610.00     79.89%
+  45830 requests in 30.04s, 5.39GB read
+Requests/sec:   1525.75
+Transfer/sec:    183.59MB
 ```
 
 ## kotlin - java 21.0.2
@@ -140,11 +140,11 @@ wrk -c90 -d30s -t3 http://localhost:8080/customers
 Running 30s test @ http://localhost:8080/customers
   3 threads and 90 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    35.94ms   57.57ms 762.08ms   97.67%
-    Req/Sec     1.06k   159.99     1.45k    83.68%
-  93135 requests in 30.10s, 10.95GB read
-Requests/sec:   3094.39
-Transfer/sec:    372.57MB
+    Latency    32.44ms   48.95ms 678.20ms   97.81%
+    Req/Sec     1.14k   179.19     2.25k    87.73%
+  100382 requests in 30.08s, 11.80GB read
+Requests/sec:   3336.81
+Transfer/sec:    401.76MB
 ```
 
 ## kotlin - native image java -21.0.2
@@ -156,11 +156,11 @@ wrk -c90 -d30s -t3 http://localhost:8080/customers
 Running 30s test @ http://localhost:8080/customers
   3 threads and 90 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   241.83ms  183.49ms   1.40s    58.75%
-    Req/Sec   134.22     74.81   424.00     69.28%
-  11855 requests in 30.06s, 1.39GB read
-Requests/sec:    394.38
-Transfer/sec:     47.50MB
+    Latency   226.51ms  173.77ms   1.49s    59.46%
+    Req/Sec   144.24     79.64   460.00     71.35%
+  12794 requests in 30.08s, 1.50GB read
+Requests/sec:    425.28
+Transfer/sec:     51.22MB
 ```
 
 ## spring VirtualThread java 21.0.2
@@ -172,11 +172,11 @@ wrk -c90 -d30s -t3 http://localhost:8080/customers
 Running 30s test @ http://localhost:8080/customers
   3 threads and 90 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    34.80ms   45.56ms 644.91ms   97.48%
-    Req/Sec     1.03k   169.90     1.99k    84.19%
-  90918 requests in 30.11s, 10.69GB read
-Requests/sec:   3019.95
-Transfer/sec:    363.60MB
+    Latency    30.85ms   41.83ms 624.53ms   97.81%
+    Req/Sec     1.16k   169.39     2.22k    88.66%
+  102294 requests in 30.09s, 12.03GB read
+Requests/sec:   3399.35
+Transfer/sec:    409.28MB
 ```
 
 ## spring VirtualThread native 21.0.2
@@ -188,11 +188,11 @@ wrk -c90 -d30s -t3 http://localhost:8080/customers
 Running 30s test @ http://localhost:8080/customers
   3 threads and 90 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   147.37ms  128.57ms   1.35s    80.04%
-    Req/Sec   233.36    140.42   717.00     67.48%
-  20703 requests in 30.07s, 2.43GB read
-Requests/sec:    688.38
-Transfer/sec:     82.89MB
+    Latency   138.06ms  118.99ms 852.17ms   80.15%
+    Req/Sec   247.86    144.39   700.00     69.46%
+  21777 requests in 30.09s, 2.56GB read
+Requests/sec:    723.64
+Transfer/sec:     87.14MB
 ```
 
 ## spring java 21.0.2
@@ -204,11 +204,11 @@ wrk -c90 -d30s -t3 http://localhost:8080/customers
 Running 30s test @ http://localhost:8080/customers
   3 threads and 90 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    32.39ms   46.02ms 653.25ms   97.78%
-    Req/Sec     1.12k   170.69     1.35k    84.53%
-  98768 requests in 30.01s, 11.61GB read
-Requests/sec:   3291.30
-Transfer/sec:    396.27MB
+    Latency    30.26ms   39.42ms 694.62ms   97.73%
+    Req/Sec     1.16k   175.90     1.42k    88.49%
+  103086 requests in 30.10s, 12.12GB read
+Requests/sec:   3425.20
+Transfer/sec:    412.39MB
 ```
 
 ## spring native 21.0.2
@@ -220,11 +220,11 @@ wrk -c90 -d30s -t3 http://localhost:8080/customers
 Running 30s test @ http://localhost:8080/customers
   3 threads and 90 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   148.52ms  130.45ms   1.06s    81.02%
-    Req/Sec   234.64    137.18   670.00     68.01%
-  20446 requests in 30.08s, 2.40GB read
-Requests/sec:    679.66
-Transfer/sec:     81.84MB
+    Latency   133.66ms  115.90ms   1.10s    80.61%
+    Req/Sec   260.69    154.86   720.00     70.22%
+  22554 requests in 30.07s, 2.65GB read
+Requests/sec:    750.15
+Transfer/sec:     90.33MB
 ```
 
 ## quarkus java 21.0.2
@@ -236,11 +236,11 @@ wrk -c90 -d30s -t3 http://localhost:8080/customers
 Running 30s test @ http://localhost:8080/customers
   3 threads and 90 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    17.45ms   30.67ms 486.99ms   98.40%
-    Req/Sec     2.13k   280.95     2.43k    86.94%
-  188657 requests in 30.08s, 22.18GB read
-Requests/sec:   6272.20
-Transfer/sec:    755.05MB
+    Latency    16.93ms   36.30ms 539.41ms   98.46%
+    Req/Sec     2.34k   296.81     2.74k    87.50%
+  207112 requests in 30.05s, 24.35GB read
+Requests/sec:   6891.98
+Transfer/sec:    829.66MB
 ```
 
 ## quarkus native
@@ -252,11 +252,11 @@ wrk -c90 -d30s -t3 http://localhost:8080/customers
 Running 30s test @ http://localhost:8080/customers
   3 threads and 90 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    62.45ms   47.20ms 339.69ms   53.39%
-    Req/Sec   512.42    128.05     0.97k    66.56%
-  46000 requests in 30.05s, 5.41GB read
-Requests/sec:   1530.93
-Transfer/sec:    184.29MB
+    Latency    61.17ms   44.64ms 308.65ms   52.13%
+    Req/Sec   513.85    116.34     0.89k    68.00%
+  46102 requests in 30.05s, 5.42GB read
+Requests/sec:   1534.19
+Transfer/sec:    184.69MB
 ```
 
 ## quarkus-reactive java 21.0.2
@@ -268,11 +268,11 @@ wrk -c90 -d30s -t3 http://localhost:8080/customers
 Running 30s test @ http://localhost:8080/customers
   3 threads and 90 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   101.58ms   46.16ms 628.62ms   96.84%
-    Req/Sec   313.98     39.83   390.00     90.41%
-  27543 requests in 30.02s, 3.24GB read
-Requests/sec:    917.44
-Transfer/sec:    110.44MB
+    Latency    25.36ms   48.88ms 641.26ms   98.18%
+    Req/Sec     1.55k   219.98     1.77k    87.23%
+  136673 requests in 30.05s, 16.07GB read
+Requests/sec:   4547.44
+Transfer/sec:    547.42MB
 ```
 
 ## quarkus-reactive native
@@ -284,11 +284,11 @@ wrk -c90 -d30s -t3 http://localhost:8080/customers
 Running 30s test @ http://localhost:8080/customers
   3 threads and 90 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   237.27ms   14.00ms 285.50ms   68.11%
-    Req/Sec   126.24     62.95   292.00     59.77%
-  11333 requests in 30.03s, 1.33GB read
-Requests/sec:    377.45
-Transfer/sec:     45.44MB
+    Latency   113.92ms   29.35ms 236.41ms   64.08%
+    Req/Sec   264.08     64.21   420.00     64.88%
+  23670 requests in 30.04s, 2.78GB read
+Requests/sec:    787.94
+Transfer/sec:     94.86MB
 ```
 
 ## webflux java 21.0.2
@@ -300,11 +300,11 @@ wrk -c90 -d30s -t3 http://localhost:8080/customers
 Running 30s test @ http://localhost:8080/customers
   3 threads and 90 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency    76.52ms   60.37ms 768.21ms   95.86%
-    Req/Sec   438.84     99.32   600.00     76.62%
-  38612 requests in 30.08s, 4.54GB read
-Requests/sec:   1283.72
-Transfer/sec:    154.52MB
+    Latency    74.39ms   54.21ms 715.20ms   95.50%
+    Req/Sec   446.04     93.06   595.00     81.21%
+  39262 requests in 30.07s, 4.61GB read
+Requests/sec:   1305.48
+Transfer/sec:    157.13MB
 ```
 
 ## webflux native
@@ -316,10 +316,10 @@ wrk -c90 -d30s -t3 http://localhost:8080/customers
 Running 30s test @ http://localhost:8080/customers
   3 threads and 90 connections
   Thread Stats   Avg      Stdev     Max   +/- Stdev
-    Latency   344.89ms  104.20ms 863.89ms   68.88%
-    Req/Sec    87.92     37.38   219.00     65.45%
-  7805 requests in 30.06s, 0.92GB read
-Requests/sec:    259.63
-Transfer/sec:     31.36MB
+    Latency   328.40ms   94.39ms 899.41ms   70.97%
+    Req/Sec    91.86     37.23   212.00     65.99%
+  8191 requests in 30.06s, 0.97GB read
+Requests/sec:    272.53
+Transfer/sec:     32.93MB
 ```
 
